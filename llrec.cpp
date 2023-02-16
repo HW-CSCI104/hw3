@@ -4,6 +4,12 @@ using namespace std;
 //*********************************************
 // Provide your implementation of llpivot below
 //*********************************************
+void findLastElementNode(Node*& head) {
+  if (head->next != nullptr) {
+    head = head->next;
+    findLastElementNode(head);
+  }
+}
 
 void llpivot(Node *&head, Node *&smaller, Node *&larger, int pivot) {
   if (smaller == nullptr || smaller->val > 100) {
@@ -25,9 +31,7 @@ void llpivot(Node *&head, Node *&smaller, Node *&larger, int pivot) {
       larger->next = nullptr;
     } else {
       Node* temp = larger;
-      while (temp->next != nullptr && temp->next != larger) {
-        temp = temp->next;
-      }
+      findLastElementNode(temp);
       Node* temp2 = head;
       head = head->next;
       temp->next = temp2;
@@ -41,9 +45,7 @@ void llpivot(Node *&head, Node *&smaller, Node *&larger, int pivot) {
       smaller->next = nullptr;
     } else {
       Node* temp = smaller;
-      while (temp->next != nullptr && temp->next != smaller) {
-        temp = temp->next;
-      }
+      findLastElementNode(temp);
       Node* temp2 = head;
       head = head->next;
       temp->next = temp2;
