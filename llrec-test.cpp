@@ -68,7 +68,9 @@ void dealloc(Node* head)
 // -----------------------------------------------
 
 
-
+bool isEven(int num) {
+    return !(num%2);
+}
 
 
 int main(int argc, char* argv[])
@@ -81,11 +83,28 @@ int main(int argc, char* argv[])
     // -----------------------------------------------
     // Feel free to update any code below this point
     // -----------------------------------------------
-    Node* head = readList(argv[1]);
+    //Node* head = readList(argv[1]);
+    Node* head = nullptr;
     cout << "Original list: ";
     print(head);
+    cout << endl;
+    head = llfilter(head, isEven);
+    cout << "Filtered list: ";
+    print(head);
+    cout << endl;
 
+
+    Node* smaller = nullptr;
+    Node* larger = nullptr;
+    llpivot(head, smaller, larger, 10);
     // Test out your linked list code
+    cout << "smaller list: ";
+    print(smaller);
+    cout << endl;
+
+    cout << "larger list: ";
+    print(larger);
+    cout << endl;
 
 
 
